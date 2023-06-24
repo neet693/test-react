@@ -1,25 +1,181 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ProductList from './components/ProductList';
+import DetailProduct from './components/ProductDetail';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
+  const products = [
+    {
+      id: 1,
+      title: 'Kursus Mikrotik Terlengkap, Lebih dari 100 Video Tutorial!',
+      description: 'Menjadi Professional Network Engineer dengan menguasai Mikrotik Advanced! Belajar materi MTCNA, MTCRE, MTCUME, MTCTCE!',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 4.7,
+      total_review: 596,
+      current_price: 129000,
+      original_price: 1199000,
+      course_length: 9.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2023-06-21"),
+    },
+    {
+      id: 2,
+      title: 'Cisco Foundation Untuk Pemula',
+      description: 'Cisco Certified Network Entry Technician - Routing & Switching Certification',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'Nixtrain Academy',
+      rating: 4.6,
+      total_review: 475,
+      current_price: 129000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2023-06-12"),
+    },
+    {
+      id: 3,
+      title: '3 dalam 1, CCNA, Python, dan Network Automation',
+      description: 'Kursus Python for Network Engineers, Belajar 3 materi dalam satu kursus, Networking, Phyton, dan Network Programming',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 4.7,
+      total_review: 386,
+      current_price: 179000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Semua Tingkat',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2023-06-9"),
+    },
+    {
+      id: 4,
+      title: 'Kursus Mikrotik Terlengkap, Lebih dari 100 Video Tutorial!',
+      description: 'Menjadi Professional Network Engineer dengan menguasai Mikrotik Advanced! Belajar materi MTCNA, MTCRE, MTCUME, MTCTCE!',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 2,
+      total_review: 100,
+      current_price: 100000,
+      original_price: 1199000,
+      course_length: 9.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2023-05-01"),
+    },
+    {
+      id: 5,
+      title: 'Cisco Foundation Untuk Pemula',
+      description: 'Cisco Certified Network Entry Technician - Routing & Switching Certification',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'Nixtrain Academy',
+      rating: 0.5,
+      total_review: 4,
+      current_price: 30000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2023-05-17"),
+    },
+    {
+      id: 6,
+      title: '3 dalam 1, CCNA, Python, dan Network Automation',
+      description: 'Kursus Python for Network Engineers, Belajar 3 materi dalam satu kursus, Networking, Phyton, dan Network Programming',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 1,
+      total_review: 10,
+      current_price: 179000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Semua Tingkat',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2022-05-20"),
+    },
+    {
+      id: 7,
+      title: 'Kursus Mikrotik Terlengkap, Lebih dari 100 Video Tutorial!',
+      description: 'Menjadi Professional Network Engineer dengan menguasai Mikrotik Advanced! Belajar materi MTCNA, MTCRE, MTCUME, MTCTCE!',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 5,
+      total_review: 1320,
+      current_price: 129000,
+      original_price: 1199000,
+      course_length: 9.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2022-06-12"),
+    },
+    {
+      id: 8,
+      title: 'Cisco Foundation Untuk Pemula',
+      description: 'Cisco Certified Network Entry Technician - Routing & Switching Certification',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'Nixtrain Academy',
+      rating: 0,
+      total_review: 0,
+      current_price: 99000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2022-12-23"),
+    },
+    {
+      id: 9,
+      title: '3 dalam 1, CCNA, Python, dan Network Automation',
+      description: 'Kursus Python for Network Engineers, Belajar 3 materi dalam satu kursus, Networking, Phyton, dan Network Programming',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 4.7,
+      total_review: 386,
+      current_price: 179000,
+      original_price: 1199000,
+      course_length: 7.5,
+      total_lesson: 111,
+      level: 'Semua Tingkat',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2022-10-19"),
+    },
+    {
+      id: 10,
+      title: 'Kursus Mikrotik Terlengkap, Lebih dari 100 Video Tutorial!',
+      description: 'Menjadi Professional Network Engineer dengan menguasai Mikrotik Advanced! Belajar materi MTCNA, MTCRE, MTCUME, MTCTCE!',
+      mentor: 'Ahmad Rosid Komarudin',
+      company: 'AgunaCourse.com | Kursus IT',
+      rating: 4.7,
+      total_review: 596,
+      current_price: 129000,
+      original_price: 1199000,
+      course_length: 9.5,
+      total_lesson: 111,
+      level: 'Pemula',
+      image: 'https://placehold.co/300x350',
+      created_date: new Date("2022-03-01"),
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<ProductList products={products} />} />
+          <Route path="/products/:slug" element={<DetailProduct products={products} />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
