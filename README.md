@@ -21,10 +21,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install -D tailwindcss
-  npm i -D daisyui@latest
-  npm install react-router-dom
-  npm install react-helmet 
+  npm install 
 ```
 don't forget to follow each step from the main website of the dependeencies.
 
